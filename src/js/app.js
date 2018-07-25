@@ -1,2 +1,2 @@
 angular
-  .module('venueScannerApp', []);
+  .module('venueScannerApp', ['ui.router']);

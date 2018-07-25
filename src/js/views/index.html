@@ -1,0 +1,14 @@
+<div ng-controller="UsersCtrl as users">
+  <h1>Venue scanner user app</h1>
+
+  <ul id="all-users">
+    <li ng-repeat="user in users.all">{{ user.firstName }} - <em>{{ user.email}}</em>
+      <button ng-click="users.usersDelete(user)">Delete {{user._id}}</button>
+      <a ui-sref="userEdit({ id: user._id })"> Edit</a>
+
+		</li>
+  </ul>
+
+
+
+</div>

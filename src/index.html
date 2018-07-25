@@ -2,42 +2,25 @@
 <html ng-app="venueScannerApp">
 <head>
   <meta charset="utf-8">
+    <base href="/">
   <title>Donut Shop</title>
   <!-- inject:js -->
   <!-- endinject -->
   <!-- inject:css -->
   <!-- endinject -->
 </head>
-<body ng-controller="UsersCtrl as users">
-  <h1>Venue scanner user app</h1>
-  <p>About to add : {{ users }}</p>
-  <!-- <form id="new-donut" ng-submit="donuts.donutsCreate()">
-    <input type="text" name="flavour" id="donut-flavour" placeholder="What type of donut?" ng-model="donuts.newDonut.flavor">
-    <select name="style" id="donut-style" ng-model="donuts.newDonut.style">
-      <option value="Old Fashioned">Old Fashioned</option>
-      <option value="Cake">Cake</option>
-      <option value="French Cruller">French Cruller</option>
-      <option value="Yeast">Yeast</option>
-      <option value="Classic Paczek">Paczek</option>
-    </select>
-    <input type="submit" value="Save My Donut">
-  </form> -->
-  <ul id="donuts">
-    <li ng-repeat="user in users.all">{{ user.firstName }} - <em>{{ user.email}}</em>
-      <button ng-click="users.usersDelete(user)">Delete {{user._id}}</button></li>
-  </ul>
+<body>
+
+  <nav>
+    <ul>
+      <li><a ui-sref="usersIndex" ui-sref-active="active">Index</a></li>
+      <li><a ui-sref="usersNew" ui-sref-active="active">New</a></li>
+    </ul>
+  </nav>
+  <section ui-view>
 
 
-  <form id="userAdd" ng-submit="users.userAdd()">
-    <input type="text" placeholder="What do you need to do?" ng-model="UsersCtrl.credentials.credentials.firstName">
-    <input type="text" placeholder="What do you need to do?" ng-model="UsersCtrl.userAdd.credentials.lastName">
-    <input type="text" placeholder="What do you need to do?" ng-model="UsersCtrl.userAdd.credentials.email">
-    <input type="submit" value="Add">
-  </form>
-
-  <p>About to add: <strong>{{ users.userAdd.credentials.firstName }}</strong></p>
-
-
+  </section>
 
 
 </body>

@@ -1,0 +1,10 @@
+<div ng-controller="UsersCtrl as users">
+  <form id="userAdd" ng-submit="users.userAdd()">
+    <input type="text" placeholder="What do you need to do?" ng-model=" users.userAdd.credentials.firstName ">
+    <input type="text" placeholder="What do you need to do?" ng-model="UsersCtrl.userAdd.credentials.lastName">
+    <input type="text" placeholder="What do you need to do?" ng-model="UsersCtrl.userAdd.credentials.email">
+    <input type="submit" value="Add">
+  </form>
+
+  <p>About to add: <strong>{{ users.userAdd.credentials.firstName }}</strong></p>
+</div>

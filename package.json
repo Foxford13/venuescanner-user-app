@@ -4,8 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js",
-    "postinstall": "bower install && gulp deploy"
+    "start": "node index.js"
   },
   "gulp": {
     "srcDir": "src/",

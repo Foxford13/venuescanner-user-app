@@ -8,6 +8,7 @@ const mongoose   = require('mongoose');
 const cors       = require('cors');
 const env        = require('./config/env');
 const routes     = require('./config/routes');
+const path = require("path");
 // mongoose.Promise = require('bluebird');
 // mongoose.connect(env.db);
 mongoose.connect(env.db, { useNewUrlParser: true });

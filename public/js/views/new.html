@@ -1,0 +1,12 @@
+
+  <form id="userAdd" ng-submit="userNew.create()">
+    <input type="text" placeholder="Firstname" ng-model=" userNew.newUser.firstName">
+    <input type="text" placeholder="Lastname" ng-model=" userNew.newUser.lastName">
+    <input type="text" placeholder="Email" ng-model=" userNew.newUser.email">
+    <input type="text" placeholder="Password" ng-model=" userNew.newUser.password">
+    <!-- <input type="text" placeholder="What do you need to do?" ng-model="UsersCtrl.userAdd.credentials.lastName">
+    <input type="text" placeholder="What do you need to do?" ng-model="UsersCtrl.userAdd.credentials.email"> -->
+    <input type="submit" value="Add">
+  </form>
+
+  <p>About to addsada: <strong>{{ users.userAdd.credentials.firstName }}</strong></p>

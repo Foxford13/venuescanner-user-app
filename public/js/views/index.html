@@ -1,0 +1,22 @@
+
+<h1>Venue scanner user app</h1>
+
+<table id="all-users" style="width:100%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>Password</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+  <tr ng-repeat="user in userIndex.all">
+    <td>{{ user.firstName }}</td>
+    <td>{{ user.lastName }}</td>
+    <td>{{ user.email}}</td>
+    <td>{{ user.password}}</td>
+    <td>  <button    ng-confirm-click="Would you like to say hi?" ng-click="userIndex.delete(user)" >Delete {{user._id}}</button></td>
+    <td>  <a ui-sref="userEdit({ id: user._id })"> Edit {{ user._id }}</a></td>
+  </tr>
+</table>

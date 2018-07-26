@@ -18,6 +18,9 @@ app.use(bodyParser.json());
 
 
 app.use('/api', routes);
-app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+app.get('/*', (req, res) => {
+const index = path.join(__dirname, 'public', 'index.html');
+res.sendFile(index);
+});
 
 app.listen(env.port, console.log(`server has started on port: ${env.port}`));

@@ -1,12 +1,22 @@
 
-  <form id="userAdd" ng-submit="userNew.create()">
-    <input type="text" placeholder="Firstname" ng-model=" userNew.newUser.firstName">
-    <input type="text" placeholder="Lastname" ng-model=" userNew.newUser.lastName">
-    <input type="text" placeholder="Email" ng-model=" userNew.newUser.email">
-    <input type="text" placeholder="Password" ng-model=" userNew.newUser.password">
-    <!-- <input type="text" placeholder="What do you need to do?" ng-model="UsersCtrl.userAdd.credentials.lastName">
-    <input type="text" placeholder="What do you need to do?" ng-model="UsersCtrl.userAdd.credentials.email"> -->
-    <input type="submit" value="Add">
-  </form>
+<form id="userAdd" name="addUser" ng-submit="userNew.create()">
 
-  <p>About to addsada: <strong>{{ users.userAdd.credentials.firstName }}</strong></p>
+  <label for="firstName">First Name</label>
+  <input type="text"  name="firstName" placeholder="Firstname" ng-model=" userNew.newUser.firstName">
+  <!-- <div ng-messages="addUser.firstName.$error" ng-if="addUser.$submitted"><div ng-message="required">Firstname is required</div></div> -->
+
+  <label for="firstName">Last Name</label>
+  <input type="text"  name="lastName" placeholder="Lastname" ng-model=" userNew.newUser.lastName">
+  <!-- <div ng-messages="addUser.lastName.$error" ng-if="addUser.$submitted"><div ng-message="required">Lastname is required</div></div> -->
+
+  <label for="firstName">Email</label>
+  <input type="text"  name="email" placeholder="Email" ng-model=" userNew.newUser.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+  <!-- <div ng-messages="addUser.email.$error" ng-if="addUser.$submitted"><div ng-message="required">Email is required</div></div> -->
+  <div ng-message="pattern" ng-if="addUser.$submitted" class="notificationThin" required>This Email is not valid</div>
+
+  <label for="password">Password</label>
+  <input type="text"  name="password" placeholder="Password" ng-model=" userNew.newUser.password">
+  <!-- <div ng-messages="addUser.password.$error" ng-if="addUser.$submitted"><div ng-message="required">Password is required</div></div> -->
+
+  <input type="submit" value="Add">
+</form>

@@ -12,10 +12,8 @@ const {
 router.route(`/users`)
 	.get(usersIndex);
 
-
 router.route(`/users/new`)
 	.post(userCreate);
-
 
 router.route(`/users/:id`)
 	.get(userEdit)

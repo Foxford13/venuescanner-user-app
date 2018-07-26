@@ -41,18 +41,15 @@ function UserNewCtrl($http, $state) {
   const vm = this;
   vm.newUser = {};
   vm.create = userCreate;
-  console.log( vm.newUser);
 
   function userCreate() {
-      console.log('i work');
     $http
     .post('/api/users/new', vm.newUser)
     .then(() => {
-      console.log(err);
       $state.go('usersIndex');
-    }, function errorCallback(response) {
-  console.log(response.data);
-  });
+    }, function errorCallback(err) {
+      console.log(err.data);
+    });
   }
 }
 
@@ -69,8 +66,9 @@ function UserEditCtrl($http, $state) {
   function usersUpdate() {
     $http.put(`api/users/${$state.params.id}`, vm.user)
     .then((response) => {
-        $state.go('usersIndex');
+      $state.go('usersIndex');
+    }, function errorCallback(err) {
+      console.log(err.data);
     });
-
   }
 }

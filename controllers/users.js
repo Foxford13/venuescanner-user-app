@@ -10,11 +10,9 @@ const { dataToSecure }  = require('../utils/controllerUtils')
 
 async function usersIndex (req, res) {
 	let usersIndex;
-	// let secureUsersIndex;
+
 	try {
 		usersIndex = await User.find().exec();
-		// secureUsersIndex = await dataToSecure(usersIndex);
-
 	}
 	catch(err) {
 		return res.status(500).end(err);
@@ -35,12 +33,6 @@ async function userCreate (req, res) {
 		await userData.save();
 	}
 	catch (err) {
-		console.log(err);
-		// if(err.name === 'ValidationError') {
-		// 	return res.badRequest({}, err.toString());
-		// }
-
-
 		return res.status(500).end(err.toString());
 	}
 
@@ -48,7 +40,7 @@ async function userCreate (req, res) {
 }
 
 /*
-*  Pulls user data to edit and sends only secure fields
+*  Pulls user data to edit
 */
 
 async function userEdit  (req, res) {
@@ -56,10 +48,8 @@ async function userEdit  (req, res) {
 	const userId = req.params.id;
 	let userData;
 
-
 	try {
 		userData = await User.findOne({ _id: userId }).exec();
-		// userData.password = '';
 	}
 	catch (err) {
 		return res.status(500).end(err.message);
@@ -68,7 +58,7 @@ async function userEdit  (req, res) {
 }
 
 /*
-*  Modifies the user data
+*  Updates user data
 */
 
 async function userUpdate (req, res) {
@@ -76,10 +66,10 @@ async function userUpdate (req, res) {
 	let userData;
 
 	try {
-		userData = await User.find({ _id: userId }).update(req.body).exec();
+		userData = await User.find({ _id: userId }).update({_id: userId}, req.body, { runValidators: true }).exec();
 	}
 	catch (err) {
-		return res.status(500).end(err.message);
+		return res.status(500).end(err.toString());
 	}
 
 	return res.json(userData);
@@ -104,13 +94,10 @@ async function userDelete (req, res) {
 
 }
 
-
-
 module.exports = {
 	usersIndex,
 	userCreate,
 	userEdit,
 	userUpdate,
-	userDelete
-
+	userDelete,
 }

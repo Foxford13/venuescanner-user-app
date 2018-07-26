@@ -10,7 +10,7 @@ const env        = require('./config/env');
 const routes     = require('./config/routes');
 // mongoose.Promise = require('bluebird');
 // mongoose.connect(env.db);
-mongoose.connect('mongodb://localhost:27017/test-venue-scanner', { useNewUrlParser: true });
+mongoose.connect(env.db, { useNewUrlParser: true });
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.static(`${__dirname}/public`));

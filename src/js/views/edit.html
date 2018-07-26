@@ -1,0 +1,14 @@
+<h1> Edit user</h1>
+
+<form id="editUser" ng-submit="userEdit.update()">
+	<label for="firstName">First Name</label>
+	<input type="text" name="firstName" ng-model="userEdit.user.firstName">
+
+	<label for="firstName">Last Name</label>
+	<input type="text" name="firstName" ng-model="userEdit.user.lastName">
+
+	<label for="firstName">Email</label>
+	<input type="text" name="firstName" ng-model="userEdit.user.email">
+
+  <button class="edit" ng-click="userEdit.update(user)">Edit</button>
+</form>

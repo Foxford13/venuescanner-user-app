@@ -2,12 +2,19 @@
 
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const { dataToSecure }  = require('../utils/controllerUtils')
+
+/*
+*  Passes secure data of all users to the main page
+*/
 
 async function usersIndex (req, res) {
 	let usersIndex;
-
+	// let secureUsersIndex;
 	try {
 		usersIndex = await User.find().exec();
+		// secureUsersIndex = await dataToSecure(usersIndex);
+
 	}
 	catch(err) {
 		return res.status(500).end(err);
@@ -21,35 +28,38 @@ async function usersIndex (req, res) {
 */
 
 async function userCreate (req, res) {
-	console.log(';req.body');
-	console.log(req.body);
+
 	const userData = new User(req.body);
 
 	try {
-
 		await userData.save();
 	}
 	catch (err) {
+		console.log(err);
+		// if(err.name === 'ValidationError') {
+		// 	return res.badRequest({}, err.toString());
+		// }
 
-		if (err.code == 11000) {
-			return res.status(409).send({
-				"message": 'This email has been taken'
-			})
-		}
 
-		return res.status(500).end(err.message);
+		return res.status(500).end(err.toString());
 	}
 
 	return res.json(userData);
 }
+
+/*
+*  Pulls user data to edit and sends only secure fields
+*/
 
 async function userEdit  (req, res) {
 
 	const userId = req.params.id;
 	let userData;
 
+
 	try {
 		userData = await User.findOne({ _id: userId }).exec();
+		// userData.password = '';
 	}
 	catch (err) {
 		return res.status(500).end(err.message);

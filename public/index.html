@@ -2,8 +2,8 @@
 <html ng-app="venueScannerApp">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; font-src 'self' data: fonts.gstatic.com;">
-    <base href="/">
+  <meta http-equiv="Content-Security-Policy" content="style-src 'unsafe-inline' 'self'; default-src 'self';  font-src 'self' data: fonts.gstatic.com;">
+  <base href="/">
   <title>Venua Scanner Trewst App</title>
   <!-- inject:js -->
   <script src="/js/app.js"></script>
@@ -20,11 +20,8 @@
       <li><a ui-sref="userNew" ui-sref-active="active">New</a></li>
     </ul>
   </nav>
-  <section ui-view>
 
-
-  </section>
-
+  <section ui-view></section>
 
 </body>
 </html>

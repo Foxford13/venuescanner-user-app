@@ -6,8 +6,8 @@ angular
 
 
 UserIndexCtrl.$inject = ['$http'];
+
 function UserIndexCtrl($http) {
-  console.log('i work');
   const vm        = this;
   vm.all          = [];
   vm.index        = usersIndex;
@@ -19,7 +19,7 @@ function UserIndexCtrl($http) {
     $http
     .get('/api/users')
     .then(response => {
-      console.log(response);
+
       vm.all = response.data;
     });
   }
@@ -71,8 +71,7 @@ function UserEditCtrl($http, $state) {
     .then((response) => {
       $state.go('usersIndex');
     }, function errorCallback(err) {
-
-      console.log(err.data );
+      console.log(err.data);
     });
   }
 }

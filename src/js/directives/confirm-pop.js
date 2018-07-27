@@ -7,7 +7,6 @@ function ngConfirmClick(){
 		priority: -1,
 		restrict: 'A',
 		link: function (scope, element, attr) {
-			console.log(attr);
 			var msg = attr.ngConfirmClick || "Are you sure?";
 			element.bind('click',function (event) {
 

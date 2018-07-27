@@ -1,6 +1,7 @@
-<h1> Edit user</h1>
+<h1 class="page-title">Edit user</h1>
 
-<form id="userEdit"  name="editUser" ng-submit="userEdit.update()">
+<form id="userEdit"  class="user-form" name="editUser" ng-submit="userEdit.update()">
+
 	<label for="firstName">First Name</label>
 	<input type="text" name="firstName" ng-model="userEdit.user.firstName">
 
@@ -11,7 +12,7 @@
 	<input type="email" name="firstName" ng-model="userEdit.user.email">
 
 	<label for="password">Password</label>
-  <input type="password"  name="password" placeholder="Password" ng-model=" userNew.newUser.password">
+  <input type="password"  name="password" ng-model="userEdit.user.password">
 
-  <button class="edit" ng-click="userEdit.update(user)">Edit</button>
+  <input type="submit" value="Edit">
 </form>

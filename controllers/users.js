@@ -33,6 +33,13 @@ async function userCreate (req, res) {
 		await userData.save();
 	}
 	catch (err) {
+
+		if (err.code == 11000) {
+			return res.status(409).send({
+				"message": "This email already has been taken"
+			})
+		}
+
 		return res.status(500).end(err.toString());
 	}
 
@@ -66,7 +73,7 @@ async function userUpdate (req, res) {
 	let userData;
 
 	try {
-		userData = await User.find({ _id: userId }).update({_id: userId}, req.body, { runValidators: true }).exec();
+		userData = await User.findOneAndUpdate({ _id: userId }, req.body, { runValidators: true }).exec();
 	}
 	catch (err) {
 		return res.status(500).end(err.toString());
@@ -80,8 +87,10 @@ async function userUpdate (req, res) {
 */
 
 async function userDelete (req, res) {
+
 	const userId = req.params.id;
 	let userData;
+
 	try {
 		userData = await User.findOne({ _id: req.params.id }).exec();
 		userData.remove();

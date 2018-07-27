@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require(`mongoose`);
-const bcrypt = require('bcrypt');
+var uniqueValidator = require('mongoose-unique-validator');
 
 const validateEmail = function(email) {
 	const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -32,18 +32,7 @@ const userSchema = new mongoose.Schema({
 	}
 });
 
-/*
-*  Validates wether email is uniqe and returns a custom message
-*/
-userSchema.path('email').validate(function(value, done) {
-   this.model('User').count({ email: value }, function(err, count) {
-        if (err) {
-            return done(err);
-        }
-        done(!count);
-    });
-}, 'Email already exists');
-
 const userModel = mongoose.model(`User`, userSchema, `user`);
+
 
 module.exports = userModel;

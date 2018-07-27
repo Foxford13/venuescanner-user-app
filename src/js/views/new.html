@@ -1,22 +1,21 @@
+<h1 class="page-title">Add user</h1>
 
-<form id="userAdd" name="addUser" ng-submit="userNew.create()">
+<form id="userAdd" class="user-form" name="addUser" ng-submit="userNew.create()">
 
   <label for="firstName">First Name</label>
   <input type="text"  name="firstName" placeholder="Firstname" ng-model=" userNew.newUser.firstName">
-  <!-- <div ng-messages="addUser.firstName.$error" ng-if="addUser.$submitted"><div ng-message="required">Firstname is required</div></div> -->
+
 
   <label for="firstName">Last Name</label>
   <input type="text"  name="lastName" placeholder="Lastname" ng-model=" userNew.newUser.lastName">
-  <!-- <div ng-messages="addUser.lastName.$error" ng-if="addUser.$submitted"><div ng-message="required">Lastname is required</div></div> -->
+
 
   <label for="firstName">Email</label>
-  <input type="text"  name="email" placeholder="Email" ng-model=" userNew.newUser.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-  <!-- <div ng-messages="addUser.email.$error" ng-if="addUser.$submitted"><div ng-message="required">Email is required</div></div> -->
-  <div ng-message="pattern" ng-if="addUser.$submitted" class="notificationThin" required>This Email is not valid</div>
+  <input type="text"  name="email" placeholder="Email" ng-model=" userNew.newUser.email">
 
   <label for="password">Password</label>
-  <input type="text"  name="password" placeholder="Password" ng-model=" userNew.newUser.password">
-  <!-- <div ng-messages="addUser.password.$error" ng-if="addUser.$submitted"><div ng-message="required">Password is required</div></div> -->
+  <input type="text" name="password" placeholder="Password" ng-model="userNew.newUser.password">
+
 
   <input type="submit" value="Add">
 </form>

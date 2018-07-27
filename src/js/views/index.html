@@ -1,7 +1,7 @@
 
-<h1>Venue scanner user app</h1>
+<h1 class="page-title">Venue scanner user app</h1>
 
-<table id="all-users" style="width:100%">
+<table id="all-users">
   <tr>
     <th>Firstname</th>
     <th>Lastname</th>
@@ -16,7 +16,7 @@
     <td>{{ user.lastName }}</td>
     <td>{{ user.email}}</td>
     <td>{{ user.password}}</td>
-    <td>  <a ui-sref="userEdit({ id: user._id })"> Edit {{ user._id }}</a></td>
-    <td>  <button    ng-confirm-click="Would you like to delete that user?" ng-click="userIndex.delete(user)" >Delete {{user._id}}</button></td>
+    <td>  <a ui-sref="userEdit({ id: user._id })"> Edit </a></td>
+    <td>  <a  href="#" ng-confirm-click="Would you like to delete that user?" ng-click="userIndex.delete(user)" >Delete</a></td>
   </tr>
 </table>

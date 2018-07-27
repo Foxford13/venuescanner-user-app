@@ -9,8 +9,9 @@ const cors       = require('cors');
 const env        = require('./config/env');
 const routes     = require('./config/routes');
 const path = require("path");
-// mongoose.Promise = require('bluebird');
-// mongoose.connect(env.db);
+
+mongoose.Promise = require('bluebird');
+
 mongoose.connect(env.db, { useNewUrlParser: true });
 app.use(morgan('dev'));
 app.use(cors());

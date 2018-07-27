@@ -15,7 +15,7 @@ async function usersIndex (req, res) {
 		usersIndex = await User.find().exec();
 	}
 	catch(err) {
-		return res.status(500).end(err);
+		return res.status(500).json(err);
 	}
 
 	return res.send(usersIndex);
@@ -34,13 +34,12 @@ async function userCreate (req, res) {
 	}
 	catch (err) {
 
-		if (err.code == 11000) {
-			return res.status(409).send({
-				"message": "This email already has been taken"
-			})
-		}
-
-		return res.status(500).end(err.toString());
+		// if (err.code == 11000) {
+		// 	return res.status(409).send({
+		// 		"message": "This email already has been taken"
+		// 	})
+		// }
+		return res.status(500).json(err);
 	}
 
 	return res.json(userData);
@@ -59,7 +58,7 @@ async function userEdit  (req, res) {
 		userData = await User.findOne({ _id: userId }).exec();
 	}
 	catch (err) {
-		return res.status(500).end(err.message);
+		return res.status(500).json(err);
 	}
 	return res.json(userData);
 }
@@ -76,7 +75,7 @@ async function userUpdate (req, res) {
 		userData = await User.findOneAndUpdate({ _id: userId }, req.body, { runValidators: true }).exec();
 	}
 	catch (err) {
-		return res.status(500).end(err.toString());
+		return res.status(500).json(err);
 	}
 
 	return res.json(userData);
@@ -96,7 +95,7 @@ async function userDelete (req, res) {
 		userData.remove();
 	}
 	catch (err) {
-		return res.status(500).end(err.message);
+		return res.status(500).json(err);
 	}
 
 	return res.json(userData);

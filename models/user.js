@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		minlength: 8,
 		maxlength: 30,
-		validate: [validatePassword, 'Please enter a valid password. Min 8 characters, one uppercase letter and a number']
+		validate: [validatePassword, 'Please enter a valid password. Min 8 characters, one uppercase letter, a number and no symbols']
 	}
 });
 

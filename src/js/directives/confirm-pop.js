@@ -12,7 +12,6 @@ function ngConfirmClick(){
 			element.bind('click',function (event) {
 
 				if (!confirm(msg)) {
-		console.log(event);
 					event.stopImmediatePropagation();
 					event.preventDefault;
 				}

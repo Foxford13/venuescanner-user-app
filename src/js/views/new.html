@@ -1,6 +1,6 @@
 <h1 class="page-title">Add user</h1>
 
-<form id="userAdd" class="user-form" name="addUser" ng-submit="userNew.create()">
+<form id="userAdd" class="user-form" name="addUserForm" ng-submit="userNew.create()">
 
   <label for="firstName">First Name</label>
   <input type="text"  name="firstName" placeholder="Firstname" ng-model=" userNew.newUser.firstName">
@@ -11,10 +11,18 @@
 
 
   <label for="firstName">Email</label>
-  <input type="text"  name="email" placeholder="Email" ng-model=" userNew.newUser.email">
+  <input type="text"  name="email" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" ng-model=" userNew.newUser.email">
+
+  <div ng-messages="addUserForm.email.$error" >
+    <div style="font-size: 13px; color: red;" ng-message="pattern">Please enter a valid email</div>
+  </div>
 
   <label for="password">Password</label>
-  <input type="text" name="password" placeholder="Password" ng-model="userNew.newUser.password">
+  <input type="password" name="passwordUser" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" ng-model="userNew.newUser.password">
+
+  <div ng-messages="addUserForm.passwordUser.$error" ng-if="addUserForm.passwordUser.$dirty">
+    <div style="font-size: 13px; color: red;" ng-message="pattern">'Please enter a valid password. Min 8 characters, one uppercase letter, a number and no symbols'</div>
+  </div>
 
 
   <input type="submit" value="Add">

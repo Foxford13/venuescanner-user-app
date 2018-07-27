@@ -49,7 +49,10 @@ function UserNewCtrl($http, $state) {
       $state.go('usersIndex');
     }, function errorCallback(err) {
       console.log(err.data);
-    });
+      if (err.data.code === 11000) {
+        alert('that email has already been taken');
+      }
+     });
   }
 }
 
@@ -68,7 +71,8 @@ function UserEditCtrl($http, $state) {
     .then((response) => {
       $state.go('usersIndex');
     }, function errorCallback(err) {
-      console.log(err.data);
+
+      console.log(err.data );
     });
   }
 }

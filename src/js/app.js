@@ -1,2 +1,2 @@
 angular
-  .module('venueScannerApp', ['ui.router']);
+  .module('venueScannerApp', ['ui.router', 'ngMessages']);

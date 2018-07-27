@@ -1,6 +1,6 @@
 <h1 class="page-title">Edit user</h1>
 
-<form id="userEdit"  class="user-form" name="editUser" ng-submit="userEdit.update()">
+<form id="userEdit"  class="user-form" name="editUserForm" ng-submit="userEdit.update()">
 
 	<label for="firstName">First Name</label>
 	<input type="text" name="firstName" ng-model="userEdit.user.firstName">
@@ -8,11 +8,20 @@
 	<label for="firstName">Last Name</label>
 	<input type="text" name="firstName" ng-model="userEdit.user.lastName">
 
+
 	<label for="firstName">Email</label>
-	<input type="email" name="firstName" ng-model="userEdit.user.email">
+	<input type="text"  name="email" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" ng-model=" userEdit.user.email">
+
+	<div ng-messages="editUserForm.email.$error" >
+		<div style="font-size: 13px; color: red;" ng-message="pattern">Please enter a valid email</div>
+	</div>
 
 	<label for="password">Password</label>
-  <input type="password"  name="password" ng-model="userEdit.user.password">
+	<input type="password" name="passwordUser" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" ng-model="userEdit.user.password">
+
+	<div ng-messages="editUserForm.passwordUser.$error" >
+		<div style="font-size: 13px; color: red;" ng-message="pattern">'Please enter a valid password. Min 8 characters, one uppercase letter, a number and no symbols'</div>
+	</div>
 
   <input type="submit" value="Edit">
 </form>
